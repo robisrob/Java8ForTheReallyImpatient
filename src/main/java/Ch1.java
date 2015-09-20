@@ -40,11 +40,6 @@ public class Ch1 {
     }
 
     public static Runnable andThen(Runnable... runnables){
-        return new Runnable() {
-            @Override
-            public void run() {
-                Arrays.asList(runnables).forEach(Runnable::run);
-            }
-        };
+        return () -> Arrays.asList(runnables).forEach(Runnable::run);
     }
 }
