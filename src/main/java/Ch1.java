@@ -31,7 +31,20 @@ public class Ch1 {
     }
 
     public static File[] subdirs(File dir){
+//        return dir.listFiles((path) -> path.isDirectory());
         return dir.listFiles(File::isDirectory);
     }
 
+    public static File[] filteredFiles(File dir, String extension) {
+        return dir.listFiles((file) -> file.getAbsolutePath().endsWith(extension));
+    }
+
+    public static Runnable andThen(Runnable... runnables){
+        return new Runnable() {
+            @Override
+            public void run() {
+                Arrays.asList(runnables).forEach(Runnable::run);
+            }
+        };
+    }
 }

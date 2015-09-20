@@ -29,4 +29,20 @@ public class Ch1Test {
         File[] subdirs = Ch1.subdirs(new File("/home/sch3lp/ws/personal/"));
         assertThat(subdirs).contains(new File("/home/sch3lp/ws/personal/blog"), new File("/home/sch3lp/ws/personal/derpingWithJava8"), new File("/home/sch3lp/ws/personal/fiantje"), new File("/home/sch3lp/ws/personal/forks"));
     }
+
+    @Test
+    public void filteredFiles_ReturnsAllFilesWithAGivenExtensionInAGivenDirectory() throws Exception {
+        String blogPath = "/home/sch3lp/ws/personal/blog";
+        File[] subdirs = Ch1.filteredFiles(new File(blogPath), ".md");
+        assertThat(subdirs).contains(
+                new File(blogPath + "/README.md"),
+                new File(blogPath + "/about.md"),
+                new File(blogPath + "/LICENSE.md")
+        );
+    }
+
+    @Test
+    public void andThen_RunsSecondAfterFirst() throws Exception {
+        Ch1.andThen(()->System.out.println("first"), ()->System.out.println("second")).run();
+    }
 }
