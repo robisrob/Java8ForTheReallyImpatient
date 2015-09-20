@@ -9,6 +9,6 @@ public class Ch1Test {
         Ch1 ch1 = new Ch1();
         ch1.cocktail("bar");
 
-        assertThat(ch1.getBar()).isEqualTo("bar");
+        assertThat(ch1.lambdaThrowingAnException()).isEqualTo("bar");
     }
 }

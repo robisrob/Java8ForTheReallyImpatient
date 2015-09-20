@@ -14,10 +14,9 @@ public class Ch1 {
         this.bar = bar;
     }
 
-    public String getBar() throws InterruptedException {
+    public String lambdaThrowingAnException() throws InterruptedException {
 //        Runnable sleeper = () -> Thread.sleep(1000); // Runnable interface does not throw an exception
         RunnableExceptionThrower sleeper = () -> Thread.sleep(1000);
-        sleeper.run();
         Callable sleeper2 = () -> { Thread.sleep(1000); return null; };
         return bar;
     }
