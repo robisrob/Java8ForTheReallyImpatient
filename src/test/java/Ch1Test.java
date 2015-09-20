@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.io.File;
+
 import static org.assertj.core.api.StrictAssertions.assertThat;
 
 public class Ch1Test {
@@ -20,5 +22,11 @@ public class Ch1Test {
         BarName collinsBarName = new BarName("collins");
 
         assertThat(actual).contains(tomBarName, collinsBarName);
+    }
+
+    @Test
+    public void subdirs_ReturnsAllSubdirsOfAGivenDirectory() throws Exception {
+        File[] subdirs = Ch1.subdirs(new File("/home/sch3lp/ws/personal/"));
+        assertThat(subdirs).contains(new File("/home/sch3lp/ws/personal/blog"), new File("/home/sch3lp/ws/personal/derpingWithJava8"), new File("/home/sch3lp/ws/personal/fiantje"), new File("/home/sch3lp/ws/personal/forks"));
     }
 }

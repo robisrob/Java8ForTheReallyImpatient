@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
 
@@ -27,6 +28,10 @@ public class Ch1 {
                 .stream()
                 .map(BarName::new)
                 .toArray(BarName[]::new);
+    }
+
+    public static File[] subdirs(File dir){
+        return dir.listFiles(File::isDirectory);
     }
 
 }
