@@ -8,5 +8,15 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    def assertjVersion = '3.1.0'
+    def jUnitVersion = '4.11'
+
+    testCompile(
+        'junit:junit:' + jUnitVersion,
+        'org.assertj:assertj-core:'+ assertjVersion
+    )
+
+    compile(
+
+    )
 }
