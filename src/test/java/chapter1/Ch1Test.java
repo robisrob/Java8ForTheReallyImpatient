@@ -1,3 +1,5 @@
+package chapter1;
+
 import org.junit.Test;
 
 import java.io.File;

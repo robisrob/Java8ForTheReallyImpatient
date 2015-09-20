@@ -1,3 +1,5 @@
+package chapter1;
+
 import java.util.Objects;
 
 public class BarName {
