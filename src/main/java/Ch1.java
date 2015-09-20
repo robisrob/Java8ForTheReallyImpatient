@@ -1,5 +1,7 @@
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 /**
@@ -41,5 +43,23 @@ public class Ch1 {
 
     public static Runnable andThen(Runnable... runnables){
         return () -> Arrays.asList(runnables).forEach(Runnable::run);
+    }
+
+    public static List<Runnable> eight(StringBuilder result ) {
+        String[] names = {"Peter", "Paul", "Mary"};
+        List<Runnable> runners = new ArrayList<>();
+        for (String name : names) {
+            runners.add(()->result.append("["+name+"]"));
+        }
+//        breaks because i needs to be final
+//        for (int i =0;i<names.length;i++){
+//            runners.add(()-> result.append("["+names[i]+"]"));
+//        }
+//        this is valid
+//        for (int i =0;i<names.length;i++){
+//            String name = names[i];
+//            runners.add(()-> result.append("["+name+"]"));
+//        }
+        return runners;
     }
 }

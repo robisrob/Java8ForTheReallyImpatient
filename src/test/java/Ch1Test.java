@@ -45,4 +45,11 @@ public class Ch1Test {
     public void andThen_RunsSecondAfterFirst() throws Exception {
         Ch1.andThen(()->System.out.println("first"), ()->System.out.println("second")).run();
     }
+
+    @Test
+    public void eight() throws Exception {
+        StringBuilder actual = new StringBuilder("");
+        Ch1.eight(actual).forEach(Runnable::run);
+        assertThat(actual.toString()).isEqualTo("[Peter][Paul][Mary]");
+    }
 }
