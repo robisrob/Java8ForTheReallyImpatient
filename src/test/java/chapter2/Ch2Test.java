@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
@@ -52,5 +53,35 @@ public class Ch2Test {
             return "doing some private business";
         });
         assertThat(verifyActions).containsExactly("lockCalled", "doing some private business", "unlockCalled");
+    }
+
+    @Test
+    public void lexicographicComparator_ComparesGivenFieldnamesByReflectionInOrder() throws Exception {
+        Person tims = new Person("tim", "schraepen");
+        Person timdm = new Person("tim", "demeyer");
+        Person elkes = new Person("elke", "schraepen");
+        Comparator comp = Ch2.lexicographicComparator("lastName", "firstName");
+        assertThat(comp.compare(tims, timdm)).isEqualTo(-1);
+        assertThat(comp.compare(tims, elkes)).isEqualTo(-1);
+        assertThat(comp.compare(timdm, elkes)).isEqualTo(-2);
+        assertThat(comp.compare(tims, tims)).isEqualTo(0);
+    }
+
+    public class Person{
+        public String firstName;
+        public String lastName;
+
+        public Person(String firstName, String lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
     }
 }
