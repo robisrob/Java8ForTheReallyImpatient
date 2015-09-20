@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 /**
@@ -5,20 +6,27 @@ import java.util.concurrent.Callable;
  */
 public class Ch1 {
 
-    private String bar;
+    private String barString;
 
     public Ch1() {
     }
 
     public void cocktail(String bar){
-        this.bar = bar;
+        this.barString = bar;
     }
 
     public String lambdaThrowingAnException() throws InterruptedException {
 //        Runnable sleeper = () -> Thread.sleep(1000); // Runnable interface does not throw an exception
         RunnableExceptionThrower sleeper = () -> Thread.sleep(1000);
         Callable sleeper2 = () -> { Thread.sleep(1000); return null; };
-        return bar;
+        return barString;
+    }
+
+    public BarName[] methodRefs(String... strings){
+        return Arrays.asList(strings)
+                .stream()
+                .map(BarName::new)
+                .toArray(BarName[]::new);
     }
 
 }
