@@ -1,6 +1,5 @@
-package chapter2;
+package chapter3;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import java.util.logging.Logger;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class Ch2Test {
+public class Ch3Test {
 
     @Test
     public void logIf_OnlyLogsIfLevelIsAppropriate() throws Exception {
@@ -21,7 +20,7 @@ public class Ch2Test {
         final boolean[] infoWasLogged = {false};
         Logger ch2Logger = Logger.getLogger("Ch2Logger");
         ch2Logger.setLevel(Level.INFO);
-        Ch2 ch2 = new Ch2(ch2Logger);
+        Ch3 ch2 = new Ch3(ch2Logger);
         ch2.logIf(Level.INFO, () -> false, () -> {
             fineWasLogged[0] = true;
             return "fine should not be logged";
@@ -48,7 +47,7 @@ public class Ch2Test {
                 verifyActions.add("unlockCalled");
             }
         };
-        Ch2.withLock(myLock, () -> {
+        Ch3.withLock(myLock, () -> {
             verifyActions.add("doing some private business");
             return "doing some private business";
         });
@@ -60,7 +59,7 @@ public class Ch2Test {
         Person tims = new Person("tim", "schraepen");
         Person timdm = new Person("tim", "demeyer");
         Person elkes = new Person("elke", "schraepen");
-        Comparator comp = Ch2.lexicographicComparator("lastName", "firstName");
+        Comparator comp = Ch3.lexicographicComparator("lastName", "firstName");
         assertThat(comp.compare(tims, timdm)).isEqualTo(-1);
         assertThat(comp.compare(tims, elkes)).isEqualTo(-1);
         assertThat(comp.compare(timdm, elkes)).isEqualTo(-2);

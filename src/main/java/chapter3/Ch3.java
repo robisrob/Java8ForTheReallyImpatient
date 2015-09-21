@@ -1,15 +1,8 @@
-package chapter2;
+package chapter3;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
-import sun.reflect.Reflection;
-
-import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Level;
@@ -18,11 +11,11 @@ import java.util.logging.Logger;
 /**
  * Created by sch3lp on 20/09/15.
  */
-public class Ch2 {
+public class Ch3 {
 
     private Logger logger = null;
 
-    public Ch2(Logger logger) {
+    public Ch3(Logger logger) {
         this.logger = logger;
     }
 
