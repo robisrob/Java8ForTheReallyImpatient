@@ -25,14 +25,14 @@ public class Ex2Test {
     }
 
     @Test
-    public void testListFilesWithLamba() {
-        File[] files = new Ex2().listFilesWithLamba();
+    public void testListSubdirectoriesWithLamba() {
+        File[] files = new Ex2().listSubdirectoriesWithLamba();
         assertThat(files).containsOnly(new File(FOLDER1), new File(FOLDER2));
     }
 
     @Test
-    public void testListFilesWithMethodReference() {
-        File[] files = new Ex2().listFilesWithMethodReference();
+    public void testListSubdirectoriesWithMethodReference() {
+        File[] files = new Ex2().listSubdirectoriesWithMethodReference();
         assertThat(files).containsOnly(new File(FOLDER1), new File(FOLDER2));
     }
 

@@ -4,11 +4,11 @@ import java.io.File;
 
 public class Ex2 {
 
-    public File[] listFilesWithLamba() {
+    public File[] listSubdirectoriesWithLamba() {
         return getTestFolder().listFiles(file -> file.isDirectory());
     }
 
-    public File[] listFilesWithMethodReference() {
+    public File[] listSubdirectoriesWithMethodReference() {
         return getTestFolder().listFiles(File::isDirectory);
     }
 
