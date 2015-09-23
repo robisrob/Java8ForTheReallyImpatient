@@ -3,7 +3,9 @@ package chapter1;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,33 +14,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Ex2Test {
 
-    private static final String TESTFOLDER = System.getProperty("user.home") + "/tmpJavaExercises";
-    private static final String FOLDER1 = TESTFOLDER + "/folder1";
-    private static final String FOLDER2 = TESTFOLDER + "/folder2";
+    @Rule
+    public TemporaryFolder temporaryFolder = new TemporaryFolder();
+
+    private static final String FOLDER1 = "folder1";
+    private static final String FOLDER2 =  "folder2";
+    private File folder1;
+    private File folder2;
 
     @Before
     public void setUp() throws IOException {
-        new File(TESTFOLDER).mkdir();
-        new File(FOLDER1).mkdir();
-        new File(FOLDER2).mkdir();
-        new File(TESTFOLDER +"/bestand1.txt").createNewFile();
+        folder1 = temporaryFolder.newFolder(FOLDER1);
+        folder2 = temporaryFolder.newFolder(FOLDER2);
+        temporaryFolder.newFile("bestand.txt");
     }
 
     @Test
     public void testListSubdirectoriesWithLamba() {
-        File[] files = new Ex2().listSubdirectoriesWithLamba();
-        assertThat(files).containsOnly(new File(FOLDER1), new File(FOLDER2));
+        File[] files = new Ex2().listSubdirectoriesWithLamba(temporaryFolder.getRoot());
+        assertThat(files).containsOnly(folder1, folder2);
     }
 
     @Test
     public void testListSubdirectoriesWithMethodReference() {
-        File[] files = new Ex2().listSubdirectoriesWithMethodReference();
-        assertThat(files).containsOnly(new File(FOLDER1), new File(FOLDER2));
-    }
-
-    @After
-    public void cleanUp() throws IOException {
-        FileUtils.deleteDirectory(new File(TESTFOLDER));
+        File[] files = new Ex2().listSubdirectoriesWithMethodReference(temporaryFolder.getRoot());
+        assertThat(files).containsOnly(folder1, folder2);
     }
 
 }

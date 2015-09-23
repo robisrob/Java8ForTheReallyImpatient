@@ -4,15 +4,12 @@ import java.io.File;
 
 public class Ex2 {
 
-    public File[] listSubdirectoriesWithLamba() {
-        return getTestFolder().listFiles(file -> file.isDirectory());
+    public File[] listSubdirectoriesWithLamba(File directory) {
+        return directory.listFiles(file -> file.isDirectory());
     }
 
-    public File[] listSubdirectoriesWithMethodReference() {
-        return getTestFolder().listFiles(File::isDirectory);
+    public File[] listSubdirectoriesWithMethodReference(File directory) {
+        return directory.listFiles(File::isDirectory);
     }
 
-    private File getTestFolder() {
-        return new File(System.getProperty("user.home") + "/tmpJavaExercises");
-    }
 }
