@@ -38,8 +38,15 @@ public class Ex4Test {
     }
 
     @Test
-    public void testSortFiles_DirectoriesBeforeFiles_ThenSortOnPathName() {
-        File[] result = ex4.sortFilesFirstDirectoriesThenOnPathName(theFile, aFile, aFileInSubFolder, theFolder, aFolder, aFolderInSubFolder);
+    public void testSortFilesWithLamba_DirectoriesBeforeFiles_ThenSortOnPathName() {
+        File[] result = ex4.sortFilesFirstDirectoriesThenOnPathNameWithLamba(theFile, aFile, aFileInSubFolder, theFolder, aFolder, aFolderInSubFolder);
+
+        assertThat(result).containsExactly(aFolder, theFolder, aFolderInSubFolder, aFile, theFile, aFileInSubFolder);
+    }
+
+    @Test
+    public void testSortFilesWithMethodReference_DirectoriesBeforeFiles_ThenSortOnPathName() {
+        File[] result = ex4.sortFilesFirstDirectoriesThenOnPathNameWithMethodReference(theFile, aFile, aFileInSubFolder, theFolder, aFolder, aFolderInSubFolder);
 
         assertThat(result).containsExactly(aFolder, theFolder, aFolderInSubFolder, aFile, theFile, aFileInSubFolder);
     }
