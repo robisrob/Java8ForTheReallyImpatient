@@ -18,6 +18,7 @@ public class Ex3Test {
     private File txtFile1;
     private File txtFile2;
     private File csvFile;
+    private Ex3 ex3;
 
     @Before
     public void setUp() throws IOException {
@@ -26,18 +27,19 @@ public class Ex3Test {
         txtFile2 = temporaryFolder.newFile("anderBestand.txt");
         csvFile = temporaryFolder.newFile("csvFile.csv");
 
+        ex3 = new Ex3();
     }
 
     @Test
     public void testListFilesWithExtension_txt(){
-        File[] result = new Ex3().listFilesWithExtension(temporaryFolder.getRoot(), "txt");
+        File[] result = ex3.listFilesWithExtension(temporaryFolder.getRoot(), "txt");
 
         assertThat(result).containsOnly(txtFile1, txtFile2);
     }
 
     @Test
     public void testListFilesWithExtension_csv(){
-        File[] result = new Ex3().listFilesWithExtension(temporaryFolder.getRoot(), "csv");
+        File[] result = ex3.listFilesWithExtension(temporaryFolder.getRoot(), "csv");
 
         assertThat(result).containsOnly(csvFile);
     }
@@ -49,7 +51,7 @@ public class Ex3Test {
 
     @Test
     public void testListFilesWithExtension_emptyExtention(){
-        File[] result = new Ex3().listFilesWithExtension(temporaryFolder.getRoot(), "");
+        File[] result = ex3.listFilesWithExtension(temporaryFolder.getRoot(), "");
 
         assertThat(result).isEmpty();
     }

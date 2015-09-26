@@ -22,22 +22,26 @@ public class Ex2Test {
     private File folder1;
     private File folder2;
 
+    private Ex2 ex2;
+
     @Before
     public void setUp() throws IOException {
         folder1 = temporaryFolder.newFolder(FOLDER1);
         folder2 = temporaryFolder.newFolder(FOLDER2);
         temporaryFolder.newFile("bestand.txt");
+
+        ex2 = new Ex2();
     }
 
     @Test
     public void testListSubdirectoriesWithLamba() {
-        File[] files = new Ex2().listSubdirectoriesWithLamba(temporaryFolder.getRoot());
+        File[] files = ex2.listSubdirectoriesWithLamba(temporaryFolder.getRoot());
         assertThat(files).containsOnly(folder1, folder2);
     }
 
     @Test
     public void testListSubdirectoriesWithMethodReference() {
-        File[] files = new Ex2().listSubdirectoriesWithMethodReference(temporaryFolder.getRoot());
+        File[] files = ex2.listSubdirectoriesWithMethodReference(temporaryFolder.getRoot());
         assertThat(files).containsOnly(folder1, folder2);
     }
 
