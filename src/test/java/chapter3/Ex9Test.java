@@ -42,7 +42,6 @@ public class Ex9Test {
     }
 
     @Test
-    @Ignore
     public void testLexicographicComparator_CompareFieldsInFollowingOrder_FirstnameLastnameStreet() {
         List<Persoon> gesorteerdePersonen = asList(timAftobbenBijenStraat, vincentMcAsomePantsAlleeStraat, timTheNewOnAhNobodyKnows)
                 .stream().sorted(Ex9.lexicographicComparator("firstname", "lastname", "street"))
