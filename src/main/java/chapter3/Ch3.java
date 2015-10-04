@@ -36,20 +36,17 @@ public class Ch3 {
 
     public static Comparator lexicographicComparator(String... fieldNames) throws NoSuchFieldException {
         // for every fieldName, create a comparator that compares value by reflection and combine them into one by reducing with Comparator.thenComparing()
-        return Arrays.asList(fieldNames)
-                .stream()
-                .map((fieldName) -> Comparator.comparing(new Function() {
-                    @Override
-                    public Object apply(Object o) {
-                        try {
-                            return o.getClass().getField(fieldName).get(o);
-                        } catch (NoSuchFieldException | IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                        return null;
-                    }
-                }))
-                .reduce((o1,o2)->0, Comparator::thenComparing);
+//        return Arrays.asList(fieldNames)
+//                .stream()
+//                .map((fieldName) -> Comparator.comparing((Object o) -> {
+//                    try {
+//                        return o.getClass().getField(fieldName).get(o);
+//                    } catch (NoSuchFieldException | IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    }
+//                    return null;
+//                }))
+//                .reduce((o1,o2)->0, Comparator::thenComparing);
 //                    why doesn't this compile?!
 //                    return Comparator.comparing((o) -> {
 //                        try {
@@ -60,6 +57,6 @@ public class Ch3 {
 //                        return null;
 //                    });
 
-
+        return null;
     }
 }
