@@ -2,9 +2,18 @@ package chapter2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Ch2 {
+
+    /**
+     * Exercise 4
+     */
+    public static IntStream intStream(int... intVals) {
+        //return Stream.of(intVals);//Stream of ints boxed to Integers
+        return IntStream.of(intVals); //Stream of ints
+    }
 
     /**
      * Exercise 5
