@@ -43,7 +43,7 @@ public class Ch2 {
     }
 
     public static ArrayList<String> reduceList_3(Stream<ArrayList<String>> input) {
-        return input.reduce(new ArrayList<String>(),
+        return input.reduce(new ArrayList<>(),
                 (initialArray, oneOfTheArrayLists) -> {
                     initialArray.addAll(oneOfTheArrayLists);
                     return initialArray;
