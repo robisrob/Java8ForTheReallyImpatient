@@ -2,10 +2,16 @@ package chapter2;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
 public class Ch2 {
+
+    /**
+     * Exercise 5
+     */
+    public static Stream<Long> randomInfiniteStream(long a, int c, double m) {
+        return Stream.iterate(0L, (x) -> (a * x + c) % Double.doubleToLongBits(m));
+    }
 
     /**
      * Exercise 8
@@ -36,10 +42,10 @@ public class Ch2 {
 
     public static ArrayList<String> reduceList_2(Stream<ArrayList<String>> input) {
         return input.reduce(new ArrayList<>(),
-                (prev, cur)-> {
-            prev.addAll(cur);
-            return prev;
-        });
+                (prev, cur) -> {
+                    prev.addAll(cur);
+                    return prev;
+                });
     }
 
     public static ArrayList<String> reduceList_3(Stream<ArrayList<String>> input) {
@@ -48,7 +54,7 @@ public class Ch2 {
                     initialArray.addAll(oneOfTheArrayLists);
                     return initialArray;
                 },
-                (prev, cur)-> {
+                (prev, cur) -> {
                     prev.addAll(cur);
                     return prev;
                 });

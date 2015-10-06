@@ -12,6 +12,13 @@ import static org.assertj.core.api.Assertions.*;
 public class Ch2Test {
 
     @Test
+    public void ex5_randomInfiniteStream() throws Exception {
+        Stream<Long> randomInfiniteStream = Ch2.randomInfiniteStream(25214903917l, 11, Math.pow(2, 48));
+        assertThat(randomInfiniteStream).isNotNull();
+        randomInfiniteStream.limit(25).forEach((System.out::println));
+    }
+
+    @Test
     public void ex8_zip_2StreamsOfSameLength_BothStreamsAreZippedTotally() throws Exception {
         Stream<String> stream1 = Stream.of("Zip1", "Zip2", "Zip3");
         Stream<String> stream2 = Stream.of("Zop1", "Zop2", "Zop3");
