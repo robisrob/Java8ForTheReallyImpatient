@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 build
 .gradle/
 .idea
 *.iml
 *~
 *target
+=======
+*.class
+*.iml
+.idea
+.gradle
+>>>>>>> derp/master
