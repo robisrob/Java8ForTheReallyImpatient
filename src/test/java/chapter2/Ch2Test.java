@@ -57,6 +57,16 @@ public class Ch2Test {
         Stream<Integer> actual = Ch2.zip(stream1.limit(7), stream2.limit(5));
         assertThat(actual.collect(Collectors.toList())).containsExactly(1,1,2,2,3,3,4,4,5,5);
     }
+    
+    @Test
+    public void ex8_testZip_infiniteStreams() throws Exception {
+        Stream<String> s1 = Stream.generate(() -> "A");
+        Stream<String> s2 = Stream.generate(() -> "Z");
+
+        Stream<String> zipped = Ch2.zip(s1, s2);
+
+        Assertions.assertThat(zipped.limit(6).toArray()).containsExactly("A", "Z", "A", "Z", "A", "Z");
+    }
 
     @Test
     public void ex9_reduce_1() throws Exception {
