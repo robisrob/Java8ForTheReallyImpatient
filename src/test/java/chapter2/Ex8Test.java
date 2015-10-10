@@ -33,25 +33,4 @@ public class Ex8Test {
 
         Assertions.assertThat(result.collect(Collectors.toList())).containsExactly(2, 1, 4, 3);
     }
-
-    //Testen Vincent
-    @Test
-    public void testZip() throws Exception {
-        Stream<String> s1 = Stream.of("A", "B", "C");
-        Stream<String> s2 = Stream.of("Z", "X");
-
-        Stream<String> zipped = Ex8.zipAlsoCompatibleWithInfiniteStreams(s1, s2);
-
-        Assertions.assertThat(zipped.toArray()).containsExactly("A", "Z", "B", "X");
-    }
-
-    @Test
-    public void testZip_infiniteStreams() throws Exception {
-        Stream<String> s1 = Stream.generate(() -> "A");
-        Stream<String> s2 = Stream.generate(() -> "Z");
-
-        Stream<String> zipped = Ex8.zipAlsoCompatibleWithInfiniteStreams(s1, s2);
-
-        Assertions.assertThat(zipped.limit(6).toArray()).containsExactly("A", "Z", "A", "Z", "A", "Z");
-    }
 }
